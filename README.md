@@ -21,7 +21,7 @@ Download Analytics: Tracks downloads and views for each resource.
 
 YouTube Video Integration: Auto-converts YouTube URLs to embed format for seamless playback.
 
-Technical Stack
+# Technical Stack
 Frontend: HTML5, CSS3 (Glassmorphism Design), Bootstrap 5, JavaScript (ES6+), AOS Animations.
 
 Backend: PHP 7.4+ (Procedural with PDO), Session-based Authentication.
