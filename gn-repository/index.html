@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GN Group | Next-Gen Learning Repository</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Additional Homepage Specific Styles */
+        .hero-section {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        .floating-cards {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .floating-card {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 15px;
+            width: 200px;
+            animation: float-card 6s infinite alternate;
+        }
+        
+        .floating-card-1 {
+            top: 20%;
+            right: 5%;
+            animation-delay: 0s;
+        }
+        
+        .floating-card-2 {
+            bottom: 20%;
+            right: 15%;
+            animation-delay: 2s;
+            width: 180px;
+        }
+        
+        .floating-card-3 {
+            top: 30%;
+            left: 5%;
+            animation-delay: 4s;
+            width: 220px;
+        }
+        
+        @keyframes float-card {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-30px) rotate(5deg); }
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--purple));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 20px;
+            transition: 0.3s;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 30px;
+            padding: 30px;
+            transition: 0.4s;
+            height: 100%;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(76, 201, 240, 0.1);
+        }
+        
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .stats-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+        }
+        
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 30px;
+            padding: 30px;
+            margin: 20px 0;
+        }
+        
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--purple));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: white;
+        }
+        
+        .subject-pill {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 50px;
+            padding: 10px 25px;
+            color: var(--text-light);
+            text-decoration: none;
+            transition: 0.3s;
+            display: inline-block;
+        }
+        
+        .subject-pill:hover {
+            background: var(--primary);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.1), rgba(114, 9, 183, 0.1));
+            border-radius: 50px;
+            padding: 60px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: var(--primary);
+            filter: blur(150px);
+            opacity: 0.3;
+            top: -100px;
+            right: -100px;
+        }
+        
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: var(--purple);
+            filter: blur(150px);
+            opacity: 0.3;
+            bottom: -100px;
+            left: -100px;
+        }
+        
+        .institution-badge {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 20px;
+            transition: 0.3s;
+            text-align: center;
+        }
+        
+        .institution-badge:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+        
+        .institution-badge img {
+            width: 80px;
+            height: 80px;
+            filter: brightness(0) invert(1);
+            opacity: 0.7;
+            transition: 0.3s;
+        }
+        
+        .institution-badge:hover img {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        
+        .news-ticker {
+            background: rgba(76, 201, 240, 0.1);
+            border: 1px solid rgba(76, 201, 240, 0.2);
+            border-radius: 50px;
+            padding: 10px 20px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #fff, var(--primary), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+            animation: gradient 5s ease infinite;
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Added styles for better mobile responsiveness */
+        @media (max-width: 768px) {
+            .cta-section {
+                padding: 40px 20px;
+            }
+            
+            .floating-card {
+                display: none; /* Hide floating cards on mobile for better performance */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animated">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+    </div>
+
+    <!-- Floating Cards Animation -->
+    <div class="floating-cards">
+        <div class="floating-card floating-card-1">
+            <i class="fas fa-file-pdf text-primary mb-2"></i>
+            <h6 class="fw-bold mb-1">Data Structures.pdf</h6>
+            <div class="progress" style="height: 4px;">
+                <div class="progress-bar bg-primary" style="width: 75%"></div>
+            </div>
+        </div>
+        <div class="floating-card floating-card-2">
+            <i class="fas fa-play-circle text-info mb-2"></i>
+            <h6 class="fw-bold mb-1">Algorithm Tutorial</h6>
+            <small class="text-white-50">2.5k views</small>
+        </div>
+        <div class="floating-card floating-card-3">
+            <i class="fas fa-tasks text-warning mb-2"></i>
+            <h6 class="fw-bold mb-1">New Assignment</h6>
+            <small class="text-white-50">Due in 3 days</small>
+        </div>
+    </div>
+<nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">
+            <i class="fas fa-atom me-2" style="color: var(--primary);"></i>GNIT Repository
+        </a>
+        <button class="navbar-toggler navbar-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto align-items-center gap-3">
+                <li class="nav-item">
+                    <a class="nav-link active" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#features">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#subjects">Subjects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#testimonials">Testimonials</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-outline-glow" href="login.php">
+                        <i class="fas fa-user-graduate me-2"></i>Student Login
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-glow" href="faculty-login.php">
+                        <i class="fas fa-chalkboard-teacher me-2"></i>Faculty Login
+                    </a>
+                </li>
+                <!-- 🔴 YEH ADMIN LOGIN BUTTON ADD KAREIN 🔴 -->
+                <li class="nav-item">
+                    <a class="btn btn-outline-danger" href="admin-login.php">
+                        <i class="fas fa-user-shield me-2"></i>Admin
+                    </a>
+                </li>
+                <!-- 🔴 UPAR TAK 🔴 -->
+            </ul>
+        </div>
+    </div>
+</nav>
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+        <div class="container">
+            <!-- News Ticker -->
+            <div class="news-ticker" data-aos="fade-down">
+                <div class="d-flex align-items-center">
+                    <span class="badge bg-primary me-3">NEW</span>
+                    <marquee behavior="scroll" direction="left" scrollamount="5" class="text-white-50">
+                        🎓 Mid-term exam schedules released for all branches • 📚 New study materials added for CSE 3rd Year • 🏆 Hackathon registration open until Dec 15th • 📝 Previous year papers now available for all subjects
+                    </marquee>
+                </div>
+            </div>
+
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-7" data-aos="fade-right">
+                    <div class="badge border border-primary text-primary px-3 py-2 rounded-pill mb-4" style="background: rgba(76, 201, 240, 0.1);">
+                        <i class="fas fa-check-circle me-2"></i> Guru Nanak Institute of Technology
+                    </div>
+                    
+                    <h1 class="hero-title">
+                        Master Your<br class="d-none d-lg-block">
+                        <span class="gradient-text">Curriculum</span> with<br class="d-none d-lg-block">
+                        <span class="typing-text" id="typewriter"></span>
+                    </h1>
+                    
+                    <p class="lead text-white-50 mb-5 pe-lg-5">
+                        Access high-quality notes, curated video lectures, and assignments specific to your branch and year. 
+                        Join <span class="text-primary fw-bold">5000+ students</span> already learning smarter.
+                    </p>
+                    
+                    <div class="d-flex gap-3 hero-cta-buttons mb-5">
+                        <!-- Changed from login.html to login.php -->
+                        <a class="btn btn-glow btn-lg px-5" href="login.php">
+                            Start Learning <i class="fas fa-arrow-right ms-2"></i>
+                        </a>
+                        <a class="btn btn-outline-glow btn-lg" href="#features">
+                            Explore Features <i class="fas fa-play ms-2"></i>
+                        </a>
+                    </div>
+
+                    <!-- Trust Badges -->
+                    <div class="d-flex align-items-center gap-4">
+                        <div class="d-flex align-items-center">
+                            <div class="d-flex">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" class="rounded-circle border border-2 border-primary" style="width: 40px; height: 40px; margin-right: -10px;">
+                                <img src="https://randomuser.me/api/portraits/men/46.jpg" class="rounded-circle border border-2 border-primary" style="width: 40px; height: 40px; margin-right: -10px;">
+                                <img src="https://randomuser.me/api/portraits/women/68.jpg" class="rounded-circle border border-2 border-primary" style="width: 40px; height: 40px;">
+                            </div>
+                            <span class="ms-3 text-white-50">Trusted by 5000+ students</span>
+                        </div>
+                        <div class="vr text-white-50"></div>
+                        <div class="d-flex gap-2">
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star-half-alt text-warning"></i>
+                            <span class="text-white-50 ms-2">4.8/5</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-5 text-center position-relative mt-5 mt-lg-0" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="glass-panel p-4" style="transform: rotate(-3deg);">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="rounded-circle bg-danger p-1 me-2" style="width:12px; height:12px;"></div>
+                            <div class="rounded-circle bg-warning p-1 me-2" style="width:12px; height:12px;"></div>
+                            <div class="rounded-circle bg-success p-1" style="width:12px; height:12px;"></div>
+                        </div>
+                        
+                        <!-- Animated Code Window -->
+                        <div class="position-relative">
+                            <img src="https://cdn-icons-png.flaticon.com/512/9070/9070895.png" alt="Coding" class="img-fluid" style="filter: drop-shadow(0 0 20px rgba(67, 97, 238, 0.4)); width: 80%;">
+                            
+                            <!-- Floating Elements -->
+                            <div class="position-absolute top-0 start-0 bg-primary bg-opacity-25 rounded p-2" style="animation: float 3s infinite;">
+                                <i class="fas fa-code text-white"></i>
+                            </div>
+                            <div class="position-absolute bottom-0 end-0 bg-purple bg-opacity-25 rounded p-2" style="animation: float 4s infinite reverse;">
+                                <i class="fas fa-database text-white"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-3 text-start">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <div class="h6 mb-1 text-white">Data Structures & Algorithms</div>
+                                    <small class="text-white-50">Prof. Sharma • CSE 3rd Year</small>
+                                </div>
+                                <span class="badge bg-primary">75% Completed</span>
+                            </div>
+                            <div class="progress mt-2" style="height: 6px; background: rgba(255,255,255,0.1);">
+                                <div class="progress-bar bg-primary" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-5" id="stats">
+        <div class="container">
+            <div class="row g-4 text-center">
+                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="0">
+                    <div class="stats-number">5000+</div>
+                    <p class="text-white-50">Active Students</p>
+                </div>
+                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stats-number">1000+</div>
+                    <p class="text-white-50">Video Lectures</p>
+                </div>
+                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stats-number">500+</div>
+                    <p class="text-white-50">Study Notes</p>
+                </div>
+                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stats-number">50+</div>
+                    <p class="text-white-50">Expert Faculty</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-5" id="features">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="badge bg-primary bg-opacity-25 text-primary px-3 py-2 rounded-pill mb-3">
+                    <i class="fas fa-star me-2"></i>Why Choose Us
+                </span>
+                <h2 class="display-5 fw-bold mb-3">Everything You Need to <span class="gradient-text">Excel</span></h2>
+                <p class="text-white-50 col-lg-8 mx-auto">Comprehensive learning resources tailored to your curriculum</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="0">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Smart Notes</h4>
+                        <p class="text-white-50 mb-4">Access curated, semester-specific notes prepared by expert faculty members.</p>
+                        <ul class="list-unstyled text-white-50">
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>Topic-wise organization</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>Downloadable PDFs</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>Regular updates</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Video Library</h4>
+                        <p class="text-white-50 mb-4">Curated playlists of the best video lectures for each subject.</p>
+                        <ul class="list-unstyled text-white-50">
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>Topic-wise tutorials</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>Expert explanations</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>Downloadable content</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Practice Material</h4>
+                        <p class="text-white-50 mb-4">Assignments, PYQs, and practice tests for thorough preparation.</p>
+                        <ul class="list-unstyled text-white-50">
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>Previous year papers</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>Model solutions</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>Weekly assignments</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subjects Section -->
+    <section class="py-5" id="subjects">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="badge bg-primary bg-opacity-25 text-primary px-3 py-2 rounded-pill mb-3">
+                    <i class="fas fa-graduation-cap me-2"></i>Explore by Branch
+                </span>
+                <h2 class="display-5 fw-bold mb-3">Find Your <span class="gradient-text">Department</span></h2>
+                <p class="text-white-50 col-lg-8 mx-auto">Choose your branch to access specialized content</p>
+            </div>
+
+            <div class="row g-3 justify-content-center">
+                <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="0">
+                    <!-- Added login.php links -->
+                    <a href="login.php" class="subject-pill w-100 text-center">
+                        <i class="fas fa-laptop-code me-2"></i>CSE
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="50">
+                    <a href="login.php" class="subject-pill w-100 text-center">
+                        <i class="fas fa-network-wired me-2"></i>IT
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="100">
+                    <a href="login.php" class="subject-pill w-100 text-center">
+                        <i class="fas fa-brain me-2"></i>AIDS
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="150">
+                    <a href="login.php" class="subject-pill w-100 text-center">
+                        <i class="fas fa-robot me-2"></i>AIML
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="200">
+                    <a href="login.php" class="subject-pill w-100 text-center">
+                        <i class="fas fa-database me-2"></i>CSEDS
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="250">
+                    <a href="login.php" class="subject-pill w-100 text-center">
+                        <i class="fas fa-hard-hat me-2"></i>CE
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="300">
+                    <a href="login.php" class="subject-pill w-100 text-center">
+                        <i class="fas fa-cogs me-2"></i>ME
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="350">
+                    <a href="login.php" class="subject-pill w-100 text-center">
+                        <i class="fas fa-microchip me-2"></i>ETC
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-5" id="testimonials">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="badge bg-primary bg-opacity-25 text-primary px-3 py-2 rounded-pill mb-3">
+                    <i class="fas fa-comments me-2"></i>Student Stories
+                </span>
+                <h2 class="display-5 fw-bold mb-3">What Our <span class="gradient-text">Students Say</span></h2>
+                <p class="text-white-50 col-lg-8 mx-auto">Join thousands of happy learners</p>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="0">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="testimonial-avatar me-3">P</div>
+                            <div>
+                                <h6 class="fw-bold mb-1">Yogesh Nandurkar</h6>
+                                <small class="text-white-50">CSE, 3rd Year</small>
+                            </div>
+                        </div>
+                        <p class="text-white-50 mb-3">"The notes and video lectures are perfectly aligned with our syllabus. Helped me score 9.2 CGPA!"</p>
+                        <div class="text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="testimonial-avatar me-3">R</div>
+                            <div>
+                                <h6 class="fw-bold mb-1">Harshal Dhote</h6>
+                                <small class="text-white-50">IT, 2nd Year</small>
+                            </div>
+                        </div>
+                        <p class="text-white-50 mb-3">"Previous year questions with solutions are a game-changer. Best platform for engineering students."</p>
+                        <div class="text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="testimonial-avatar me-3">A</div>
+                            <div>
+                                <h6 class="fw-bold mb-1">Rijak Singh Bhatiya</h6>
+                                <small class="text-white-50">AIDS, 4th Year</small>
+                            </div>
+                        </div>
+                        <p class="text-white-50 mb-3">"The video tutorials and assignments helped me prepare for placements. Got placed at Microsoft!"</p>
+                        <div class="text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Institutions Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="display-6 fw-bold mb-3">Our <span class="gradient-text">Institutions</span></h2>
+                <p class="text-white-50">Part of the prestigious GNI Group</p>
+            </div>
+
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="0">
+                    <div class="institution-badge">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png" alt="GNIT" class="mb-3">
+                        <h6 class="fw-bold mb-1">GNIT</h6>
+                        <small class="text-white-50">Engineering & Management</small>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="institution-badge">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png" alt="GNIM" class="mb-3">
+                        <h6 class="fw-bold mb-1">GNIET</h6>
+                        <small class="text-white-50">Engineering & Technology
+                        </small>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="institution-badge">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png" alt="GNP" class="mb-3">
+                        <h6 class="fw-bold mb-1">GNIHM</h6>
+                        <small class="text-white-50">Hotel Management</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="cta-section text-center" data-aos="zoom-in">
+                <h2 class="display-5 fw-bold mb-4">Ready to Start Your Learning Journey?</h2>
+                <p class="lead text-white-50 mb-5 col-lg-8 mx-auto">Join thousands of students already accessing quality study materials</p>
+                <div class="d-flex justify-content-center gap-3">
+                    <!-- Changed from login.html to login.php -->
+                    <a href="login.php" class="btn btn-glow btn-lg px-5">
+                        <i class="fas fa-user-graduate me-2"></i>Student Login
+                    </a>
+                    <!-- Changed from faculty-login.html to faculty-login.php -->
+                    <a href="faculty-login.php" class="btn btn-outline-glow btn-lg px-5">
+                        <i class="fas fa-chalkboard-teacher me-2"></i>Faculty Login
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-5 mt-5 border-top border-secondary">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <a class="navbar-brand mb-3 d-inline-block" href="index.html">
+                        <i class="fas fa-atom me-2" style="color: var(--primary);"></i>GNIT Repository
+                    </a>
+                    <p class="text-white-50">Next-generation learning platform for engineering students.</p>
+                    <div class="social-links">
+                        <a href="#" class="text-white-50 me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white-50 me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white-50 me-3"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-white-50"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <h6 class="fw-bold mb-3">Quick Links</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">About Us</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Contact</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Privacy Policy</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Terms of Use</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h6 class="fw-bold mb-3">Resources</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="login.php" class="text-white-50 text-decoration-none">Lecture Notes</a></li>
+                        <li class="mb-2"><a href="login.php" class="text-white-50 text-decoration-none">Video Tutorials</a></li>
+                        <li class="mb-2"><a href="login.php" class="text-white-50 text-decoration-none">Assignments</a></li>
+                        <li class="mb-2"><a href="login.php" class="text-white-50 text-decoration-none">Previous Year Papers</a></li>
+                        <li class="mb-2"><a href="login.php" class="text-white-50 text-decoration-none"> Lecture-Wise Student Attendance</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h6 class="fw-bold mb-3">Contact</h6>
+                    <ul class="list-unstyled text-white-50">
+                        <li class="mb-2"><i class="fas fa-map-marker-alt me-2 text-primary"></i>Kalmeshwar Road,Near Dahegaon, Radha Swami Satsang,Nagpur, Maharastra, India</li>
+                        <li class="mb-2"><i class="fas fa-phone me-2 text-primary"></i>+91 1234567890</li>
+                        <li class="mb-2"><i class="fas fa-envelope me-2 text-primary"></i>support@gnit.ac.in</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="border-secondary my-4">
+            <div class="text-center text-white-50 small">
+                © Vitthal Gopinath Chavan ,Final Year(CSE Department),Guru Nanak Institute Of Technology, Nagpur.
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+
+        // Typing effect
+        const texts = [
+            'Smart Notes',
+            'Video Lectures',
+            'Practice Problems',
+            'Previous Year Papers',
+            'Expert Guidance'
+        ];
+        
+        let count = 0;
+        let index = 0;
+        let currentText = '';
+        let letter = '';
+        
+        (function type() {
+            if (count === texts.length) {
+                count = 0;
+            }
+            currentText = texts[count];
+            letter = currentText.slice(0, ++index);
+            
+            document.getElementById('typewriter').textContent = letter;
+            if (letter.length === currentText.length) {
+                count++;
+                index = 0;
+                setTimeout(type, 2000);
+            } else {
+                setTimeout(type, 100);
+            }
+        })();
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

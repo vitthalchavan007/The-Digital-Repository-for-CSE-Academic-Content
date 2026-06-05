@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Login - GN Group</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="bg-animated">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-atom me-2"></i>GNIT Repository
+            </a>
+            <div class="ms-auto">
+                <a href="index.html" class="btn btn-outline-glow me-2">Home</a>
+                <a href="faculty-login.html" class="btn btn-glow">Faculty Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container min-vh-100 d-flex align-items-center justify-content-center">
+        <div class="row w-100">
+            <div class="col-md-6 col-lg-5 mx-auto">
+                <div class="glass-panel p-4 p-md-5">
+                    <div class="text-center mb-4">
+                        <div class="display-4 text-primary mb-3">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <h2 class="fw-bold">Student Login</h2>
+                        <p class="text-white-50">Access your learning materials</p>
+                    </div>
+
+                    <form id="student-login-form">
+                        <div class="floating-input-group">
+                            <input type="email" id="login-email" placeholder=" " required>
+                            <label>Email Address</label>
+                        </div>
+                        <div class="floating-input-group">
+                            <input type="password" id="login-password" placeholder=" " required>
+                            <label>Password</label>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="remember">
+                                <label class="form-check-label small text-white-50" for="remember">
+                                    Remember me
+                                </label>
+                            </div>
+                            <a href="#" class="text-primary small">Forgot Password?</a>
+                        </div>
+
+                        <button type="submit" class="btn btn-glow w-100 py-3 mb-3">
+                            <i class="fas fa-sign-in-alt me-2"></i>Login to Dashboard
+                        </button>
+
+                        <p class="text-center text-white-50 mb-0">
+                            Don't have an account? 
+                            <a href="#" class="text-primary" data-bs-toggle="modal" data-bs-target="#registerModal">Register here</a>
+                        </p>
+                    </form>
+
+                    <div class="mt-4 pt-3 border-top border-secondary">
+                        <p class="small text-white-50 text-center mb-2">Demo Credentials:</p>
+                        <div class="d-flex justify-content-center gap-3 small">
+                            <span class="badge bg-dark">student@gnit.ac.in</span>
+                            <span class="badge bg-dark">password</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal fade custom-modal" id="registerModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content p-4">
+                <div class="modal-header border-0">
+                    <h4 class="fw-bold">Create Student Account</h4>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="register-form">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="floating-input-group">
+                                    <input type="text" id="reg-fname" placeholder=" " required>
+                                    <label>First Name</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="floating-input-group">
+                                    <input type="text" id="reg-lname" placeholder=" " required>
+                                    <label>Last Name</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="floating-input-group">
+                                    <input type="text" id="reg-student-id" placeholder=" " required>
+                                    <label>Student ID</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="floating-input-group">
+                                    <input type="email" id="reg-email" placeholder=" " required>
+                                    <label>Email Address</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="floating-input-group">
+                                    <select id="reg-branch" required>
+                                        <option value="" disabled selected></option>
+                                        <option value="CSE">Computer Science & Engineering</option>
+                                        <option value="IT">Information Technology</option>
+                                        <option value="AIDS">Artificial Intelligence and Data Science</option>
+                                        <option value="AIML">AIML</option>
+                                        <option value="CSEDS">Computer Science (Data Science)</option>
+                                        <option value="CE">Civil Engineering</option>
+                                        <option value="ME">Mechanical Engineering</option>
+                                        <option value="ECE">Electronics & Communication</option>
+                                    </select>
+                                    <label>Branch</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="floating-input-group">
+                                    <select id="reg-year" required>
+                                        <option value="" disabled selected></option>
+                                        <option value="1">1st Year</option>
+                                        <option value="2">2nd Year</option>
+                                        <option value="3">3rd Year</option>
+                                        <option value="4">4th Year</option>
+                                    </select>
+                                    <label>Year</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="floating-input-group">
+                                    <select id="reg-semester" required>
+                                        <option value="" disabled selected></option>
+                                    </select>
+                                    <label>Semester</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="floating-input-group">
+                                    <input type="password" id="reg-password" placeholder=" " required>
+                                    <label>Password</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-glow w-100 py-3">Complete Registration</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>
